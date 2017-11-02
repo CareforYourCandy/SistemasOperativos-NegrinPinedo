@@ -26,7 +26,7 @@ public class Consola extends Productor {
             try {
                 SP.acquire(1);
                 sleep((long) (tiempo * 3));
-             
+                
                
                 SE.acquire(1);
                     almacen.producir(almacen.getApunProductor());

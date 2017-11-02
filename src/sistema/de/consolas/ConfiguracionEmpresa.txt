@@ -1,5 +1,5 @@
 Tiempo (en segundos):
-0.5
+2
 Dias entre despacho: 
 5
 Capacidad Maxima Almacen Controles:
