@@ -1,0 +1,26 @@
+Tiempo (en segundos):
+0.5
+Dias entre despacho: 
+5
+Capacidad Maxima Almacen Controles:
+30
+Capacidad Maxima Almacen Consolas:
+20
+Capacidad Maxima Almacen Paquetes:
+40
+Cantidad Inicial Controles:
+3
+Cantidad Inicial Consolas:
+2
+Cantidad Inicial Paquetes:
+1
+Cantidad M�xima Controles:
+5
+Cantidad M�xima Consolas:
+5
+Cantidad M�xima Paquetes:
+5
+Cantidad Inicial Ensambladores:
+1
+Cantidad M�xima Ensambladores:
+5
