@@ -14,13 +14,13 @@ Cantidad Inicial Consolas:
 2
 Cantidad Inicial Paquetes:
 1
-Cantidad M�xima Controles:
+Cantidad Maxima Controles:
 5
-Cantidad M�xima Consolas:
-5
-Cantidad M�xima Paquetes:
-5
+Cantidad Maxima Consolas:
+10
+Cantidad Maxima Paquetes:
+3
 Cantidad Inicial Ensambladores:
 1
-Cantidad M�xima Ensambladores:
-5
+Cantidad Maxima Ensambladores:
+4

@@ -14,6 +14,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File; 
+import java.io.FileWriter; 
 
 public class SistemaDeConsolas {
     
@@ -353,150 +355,256 @@ public class SistemaDeConsolas {
         else
             System.out.println("NO FURULA NO ENSAMBLADORES");
     }
-    public void leerArchivo() throws FileNotFoundException, IOException {
+    public void leerArchivo() throws FileNotFoundException, IOException, NullPointerException {
        String  cadena;  
-       
+       boolean error = false; 
+      
+        
+        
        String archivo = "src\\sistema\\de\\consolas\\ConfiguracionEmpresa.txt"; 
        FileReader fr = new FileReader(archivo); 
        BufferedReader br = new BufferedReader(fr); 
+       try {
+       lectura: { 
         cadena = br.readLine(); 
-        try {
+   
         if (!cadena.equals("Tiempo (en segundos):")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 1 (Lineas con strings o desplazamiento de lineas) ");
+            error = true; 
+            break lectura; 
         }
         cadena = br.readLine(); 
 
         tiempo = Float.parseFloat(cadena);
         if (tiempo <= 0) {
-            System.out.println("Inserto un tiempo inválido");
+            System.out.println("Inserto un tiempo invÃ¡lido");
+            error = true;
+            break lectura; 
         }
         tiempo = tiempo * 1000; 
        
         cadena = br.readLine();
          if (!cadena.equals("Dias entre despacho: ")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 2 (Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine(); 
   
         dias = Integer.parseInt(cadena);
         if (dias <= 0) {
-            System.out.println("Insertó un monto de dias inválido (menor o igual a 0)"); 
+            System.out.println("InsertÃ³ un monto de dias invÃ¡lido (menor o igual a 0)"); 
+            error = true;
+            break lectura; 
         }
        
         cadena = br.readLine();
          if (!cadena.equals("Capacidad Maxima Almacen Controles:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 3 (Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine(); 
         tamControles = Integer.parseInt(cadena);
         if (tamControles <= 0) {
-            System.out.println("El tamaño del almacen de controles es inválido (menor o igual a 0)");
+            System.out.println("El tamaÃ±o del almacen de controles es invÃ¡lido (menor o igual a 0)");
+            error = true;
+            break lectura; 
         }
         
         cadena = br.readLine();
         if (!cadena.equals("Capacidad Maxima Almacen Consolas:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 4(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         
         cadena = br.readLine();
         tamConsolas = Integer.parseInt(cadena); 
         if (tamConsolas <= 0) {
-            System.out.println("El tamaño del almacen de controles es inválido (menor o igual a 0)");
+            System.out.println("El tamaÃ±o del almacen de controles es invÃ¡lido (menor o igual a 0)");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
           if (!cadena.equals("Capacidad Maxima Almacen Paquetes:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 5(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         tamPaquetes = Integer.parseInt(cadena); 
         if (tamPaquetes <= 0) {
-            System.out.println("El tamaño del almaen de paquetes es inválido (menor o igual  a 0)");
+            System.out.println("El tamaÃ±o del almaen de paquetes es invÃ¡lido (menor o igual  a 0)");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
           if (!cadena.equals("Cantidad Inicial Controles:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 6(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
           
         cadena = br.readLine();
         inicialControles = Integer.parseInt(cadena); 
         if (inicialControles < 0) {
             System.out.println("La cantidad inicial de productores de controles es menor a 0");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
           if (!cadena.equals("Cantidad Inicial Consolas:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 7(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         inicialConsolas = Integer.parseInt(cadena); 
         if (inicialConsolas <0) {
             System.out.println("La cantidad inicial de productores de consoals es menor a 0");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
           if (!cadena.equals("Cantidad Inicial Paquetes:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 8(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         inicialPaquetes = Integer.parseInt(cadena);
         if (inicialPaquetes <0) {
         System.out.println("La cantidad inicial de productores de paquetes es menor a 0 ");
+        error = true;
+        break lectura; 
         }
         
         cadena = br.readLine();
-          if (!cadena.equals("Cantidad M�xima Controles:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+          if (!cadena.equals("Cantidad Maxima Controles:")) {
+            System.out.println("Archivo corrompido 9(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         if (Integer.parseInt(cadena) <= 0) {
-            System.out.println("La cantidad máxima de productores de controles es menor o igual a 0");
+            System.out.println("La cantidad mÃ¡xima de productores de controles es menor o igual a 0");
+            error = true;
+            break lectura; 
         }
         productoresControles = new Productor[Integer.parseInt(cadena)]; 
         cadena = br.readLine();
-          if (!cadena.equals("Cantidad M�xima Consolas:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+          if (!cadena.equals("Cantidad Maxima Consolas:")) {
+            System.out.println("Archivo corrompido 10(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         if (Integer.parseInt(cadena) <= 0) {
-            System.out.println("La cantidad máxima de productores de consola es menor o igual a 0");
+            System.out.println("La cantidad mÃ¡xima de productores de consola es menor o igual a 0");
+            error = true;
+            break lectura; 
         }
         productoresConsola = new Productor[Integer.parseInt(cadena)]; 
         cadena = br.readLine();
-          if (!cadena.equals("Cantidad M�xima Paquetes:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+          if (!cadena.equals("Cantidad Maxima Paquetes:")) {
+            System.out.println("Archivo corrompido 11(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         if (Integer.parseInt(cadena) <= 0) {
-            System.out.println("La cantidad máxima de productores de paquetes es menor o igual a 0");
+            System.out.println("La cantidad mÃ¡xima de productores de paquetes es menor o igual a 0");
+            error = true;
+            break lectura; 
         }
         productoresPaquetes = new Productor[Integer.parseInt(cadena)]; 
         cadena = br.readLine();
           if (!cadena.equals("Cantidad Inicial Ensambladores:")) {
-            System.out.println("Archivo corrompido (Lineas con strings o desplazamiento de lineas) ");
+            System.out.println("Archivo corrompido 12(Lineas con strings o desplazamiento de lineas) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         if (Integer.parseInt(cadena) < 0) {
-            System.out.println("La cantidad inicial de ensambladores es menor a 0"); 
+            System.out.println("La cantidad inicial de ensambladores es menor a 0");
+            error = true;
+            break lectura; 
         }
         inicialEnsambladores = Integer.parseInt(cadena);
         cadena = br.readLine();
-          if (!cadena.equals("Cantidad M�xima Ensambladores:")) {
-            System.out.println("Archivo corrompido (Desplazamiento de lineas o modificacion de lineas no modificables) ");
+          if (!cadena.equals("Cantidad Maxima Ensambladores:")) {
+            System.out.println("Archivo corrompido 13(Desplazamiento de lineas o modificacion de lineas no modificables) ");
+            error = true;
+            break lectura; 
         }
         cadena = br.readLine();
         if (Integer.parseInt(cadena) <= 0) {
             System.out.println("La cantidad maxima de ensambladores es menor o igual a 0");
+            error = true;
+            break lectura; 
             
         }
          Ensambladores = new Ensamblador[Integer.parseInt(cadena)]; 
+        }
+        
        br.close(); 
-       
+       if (error) {
+           System.out.println("SE GENERARA UN ARCHIVO NUEVO");
+           generarArchivo(); 
+       } 
         }
        catch (NumberFormatException ex) {
-           System.out.println("Se ha ingresado un valor decimal en un lugar donde va un entero ");
+           System.out.println("Se ha ingresado un valor inválido en el numero (Valor decimal donde va entero o valor no numérico");
+           System.out.println("SE GENERARA UN ARCHIVO NUEVO");
+           generarArchivo(); 
        }
-       
+       catch (NullPointerException ex2) {
+           System.out.println("Se ha borrado alguna parte del archivo de texto, o se ha dejado vacio alguna de las casillas numericas");
+           System.out.println("SE GENERARRA UN ARCHIVO NUEVO");
+           generarArchivo(); 
+       }
      
     }
-    
+    public void generarArchivo() throws IOException {
+     String texto =   "Tiempo (en segundos):\n" +
+    "2\n" +
+    "Dias entre despacho: \n" +
+    "5\n" +
+    "Capacidad Maxima Almacen Controles:\n" +
+    "30\n" +
+    "Capacidad Maxima Almacen Consolas:\n" +
+    "20\n" +
+    "Capacidad Maxima Almacen Paquetes:\n" +
+    "40\n" +
+    "Cantidad Inicial Controles:\n" +
+    "3\n" +
+    "Cantidad Inicial Consolas:\n" +
+    "2\n" +
+    "Cantidad Inicial Paquetes:\n" +
+    "1\n" +
+    "Cantidad Maxima Controles:\n" +
+    "5\n" +
+    "Cantidad Maxima Consolas:\n" +
+    "10\n" +
+    "Cantidad Maxima Paquetes:\n" +
+    "3\n" +
+    "Cantidad Inicial Ensambladores:\n" +
+    "1\n" +
+    "Cantidad Maxima Ensambladores:\n" +
+    "4"; 
+     
+        String path = "src\\sistema\\de\\consolas\\ConfiguracionEmpresa.txt";
+        File fold = new File(path); 
+        fold.delete(); 
+        File nuevo = new File(path);
+        
+        FileWriter fw = new FileWriter(nuevo, false); 
+        fw.write(texto); 
+        fw.close(); 
+        
+        
+    }
     public void expropiese() {
         while (totalEnsambladores != 0) {
             despedirEnsamblador(); 
