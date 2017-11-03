@@ -47,7 +47,7 @@ public class Gerente extends Thread {
                 }
                 s1.release(); 
                 dormido[1] = true; 
-                sleep((long) (hora*tiempo/24));
+                sleep((long) (hora*tiempo/24)-100);
                 hora = aux.nextInt(18 - 6  + 1) + 6; 
                 
             } catch (InterruptedException ex) {
