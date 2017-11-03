@@ -24,6 +24,8 @@ public class SistemaDeConsolas {
     private int tamConsolas;
     private int tamPaquetes;
     
+   // lalalalalalallala
+    
     private int inicialControles;
     private int inicialConsolas;
     private int inicialPaquetes; 
