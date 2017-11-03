@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.File; 
 import java.io.FileWriter; 
+import java.util.Scanner; 
 
 public class SistemaDeConsolas {
     
@@ -550,21 +551,38 @@ public class SistemaDeConsolas {
         
        br.close(); 
        if (error) {
-           System.out.println("SE GENERARA UN ARCHIVO NUEVO");
-           generarArchivo(); 
+           Error(); 
        } 
         }
        catch (NumberFormatException ex) {
            System.out.println("Se ha ingresado un valor inválido en el numero (Valor decimal donde va entero o valor no numérico");
-           System.out.println("SE GENERARA UN ARCHIVO NUEVO");
-           generarArchivo(); 
+           
+        Error(); 
        }
        catch (NullPointerException ex2) {
            System.out.println("Se ha borrado alguna parte del archivo de texto, o se ha dejado vacio alguna de las casillas numericas");
-           System.out.println("SE GENERARRA UN ARCHIVO NUEVO");
-           generarArchivo(); 
+        Error(); 
        }
      
+    }
+    
+    public void Error() throws IOException {
+        System.out.println("Desea tratar de arreglar el archivo de texto por su cuenta [0] o generar uno nuevo [1]");
+        Scanner sc = new Scanner(System.in);
+        int respuesta = sc.nextInt();
+        
+        while (respuesta != 0 && respuesta != 1) {
+            System.out.println("Por favor introduzca un valor válido (0 o 1");
+            respuesta = sc.nextInt(); 
+        }
+        if (respuesta == 1) {
+            generarArchivo();
+        }
+        else {
+        System.out.println("Se terminara la ejecucion del programa");
+        System.exit(0); 
+        }
+        
     }
     public void generarArchivo() throws IOException {
      String texto =   "Tiempo (en segundos):\n" +
@@ -602,7 +620,7 @@ public class SistemaDeConsolas {
         FileWriter fw = new FileWriter(nuevo, false); 
         fw.write(texto); 
         fw.close(); 
-        
+        leerArchivo(); 
         
     }
     public void expropiese() {
